@@ -345,7 +345,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Smoothness",
     "m_StageCapability": 2,
-    "m_Value": 0.5,
+    "m_Value": 0.25,
     "m_DefaultValue": 0.5,
     "m_Labels": []
 }
@@ -361,9 +361,9 @@
     "m_ShaderOutputName": "Emission",
     "m_StageCapability": 2,
     "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
+        "x": 0.03826984390616417,
+        "y": 0.18867921829223634,
+        "z": 0.043798867613077167
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -452,10 +452,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 0.0,
-            "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
+            "x": 11.0,
+            "y": 664.0,
+            "width": 200.0,
+            "height": 41.0
         }
     },
     "m_Slots": [
