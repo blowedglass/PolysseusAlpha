@@ -43,4 +43,6 @@ public class InputManager : MonoBehaviour
     {
         onFoot.Disable();
     }
+
+    //test to change unity file for git
 }
