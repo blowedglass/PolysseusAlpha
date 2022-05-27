@@ -436,6 +436,7 @@ MonoBehaviour:
   maxSpeed: 5
   gravity: -9.8
   jumpHeight: 0.8
+  sprintSpeed: 10
 --- !u!114 &1641701303
 MonoBehaviour:
   m_ObjectHideFlags: 0
