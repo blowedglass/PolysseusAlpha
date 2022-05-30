@@ -17,11 +17,11 @@ public class PlayerMotor : MonoBehaviour
     //bool to check if run
     private KeyCode LeftShift = KeyCode.LeftShift;
     private bool isSprinting => Input.GetKey(LeftShift);
-    public float sprintSpeed = 10f; 
+    public float sprintSpeed = 10f;
 
-    
+
     Animator animator;
-    
+
 
 
 
@@ -40,7 +40,7 @@ public class PlayerMotor : MonoBehaviour
 
         //animator = GetComponent<animator>;
 
-        
+
 
 
     }
@@ -64,16 +64,19 @@ public class PlayerMotor : MonoBehaviour
         {
             animator.SetFloat("Speed", 0.5f, .1f, Time.deltaTime);
 
+
+
         }
 
         else
         {
             animator.SetFloat("Speed", 0f, .1f, Time.deltaTime);
+
+
+
+
+
         }
-
-
-
-
     }
 
     //receive the inputs for out InputManager.cs and apply them to char controller
@@ -102,44 +105,46 @@ public class PlayerMotor : MonoBehaviour
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
         }
     }
-
-    /*public void UpdateAnimatorValues(float bool)
-    {
-        
-
-
-    }
-
-    public void UpdateAnimatorValues(float Speed)
-    {
-      
-        float h = 0;
-        //float speed = 5f;
-        animator.GetFloat("Speed");
-
-        if (Speed > 0 && Speed < 0.55f)
-        {
-            h = .5f;
-        }
-        else if (Speed > 0.55f)
-        {
-            h = 1;
-        }
-        else if (Speed < 0 && Speed > -0.55f)
-        {
-            h = -0.5f;  
-        }
-        else if (Speed < -0.55f)
-        {
-            h = -1;
-        }
-        else
-        {
-            h = 0;
-        }
-      
-
-        animator.SetFloat("Base Layer", h, 0.1f, Time.deltaTime);
-    } */
-
 }
+
+        /*public void UpdateAnimatorValues(float bool)
+        {
+
+
+
+        }
+
+        public void UpdateAnimatorValues(float Speed)
+        {
+
+            float h = 0;
+            //float speed = 5f;
+            animator.GetFloat("Speed");
+
+            if (Speed > 0 && Speed < 0.55f)
+            {
+                h = .5f;
+            }
+            else if (Speed > 0.55f)
+            {
+                h = 1;
+            }
+            else if (Speed < 0 && Speed > -0.55f)
+            {
+                h = -0.5f;  
+            }
+            else if (Speed < -0.55f)
+            {
+                h = -1;
+            }
+            else
+            {
+                h = 0;
+            }
+
+
+            animator.SetFloat("Base Layer", h, 0.1f, Time.deltaTime);
+        } */
+
+    
+
