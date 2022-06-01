@@ -107,44 +107,4 @@ public class PlayerMotor : MonoBehaviour
     }
 }
 
-        /*public void UpdateAnimatorValues(float bool)
-        {
-
-
-
-        }
-
-        public void UpdateAnimatorValues(float Speed)
-        {
-
-            float h = 0;
-            //float speed = 5f;
-            animator.GetFloat("Speed");
-
-            if (Speed > 0 && Speed < 0.55f)
-            {
-                h = .5f;
-            }
-            else if (Speed > 0.55f)
-            {
-                h = 1;
-            }
-            else if (Speed < 0 && Speed > -0.55f)
-            {
-                h = -0.5f;  
-            }
-            else if (Speed < -0.55f)
-            {
-                h = -1;
-            }
-            else
-            {
-                h = 0;
-            }
-
-
-            animator.SetFloat("Base Layer", h, 0.1f, Time.deltaTime);
-        } */
-
-    
-
+ 
