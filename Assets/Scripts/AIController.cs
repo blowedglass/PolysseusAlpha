@@ -7,8 +7,8 @@ public class AIController : MonoBehaviour
     public NavMeshAgent navMeshAgent;               //  Nav mesh agent component
     public float startWaitTime = 2;                 //  Wait time of every action
     public float timeToRotate = 0.5f;                  //  Wait time when the enemy detect near the player without seeing
-    public float speedWalk = 2;                     //  Walking speed, speed in the nav mesh agent
-    public float speedRun = 6;                      //  Running speed
+    public float speedWalk = 1;                     //  Walking speed, speed in the nav mesh agent
+    public float speedRun = 3;                      //  Running speed
 
     public float viewRadius = 15;                   //  Radius of the enemy view
     public float viewAngle = 90;                    //  Angle of the enemy view

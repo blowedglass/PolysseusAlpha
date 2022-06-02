@@ -41704,9 +41704,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 3782905293489362809}
   startWaitTime: 4
-  timeToRotate: 2
-  speedWalk: 5
-  speedRun: 9
+  timeToRotate: 1
+  speedWalk: 3
+  speedRun: 6
   viewRadius: 15
   viewAngle: 90
   playerMask:
