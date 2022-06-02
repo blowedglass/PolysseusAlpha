@@ -5,26 +5,27 @@ using UnityEngine.InputSystem;
 
 public class PlayerMotor : MonoBehaviour
 {
+    [Header("Character Essentials")]
     private CharacterController controller;
+    public GameObject Character;
+    Animator animator;
+
+    [Header("Movement Speeds")]
     private Vector3 playerVelocity;
     public float speed = 5f;
     public float maxSpeed = 5f;
+
+    [Header("Jump Functionality")]
     private bool isGrounded;
     public float gravity = -9.8f;
     public float jumpHeight = 3f;
-    public GameObject Character;
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMult = 2f;
 
-    //bool to check if run
+    [Header("Sprint Functionality")]
     private KeyCode LeftShift = KeyCode.LeftShift;
     private bool isSprinting => Input.GetKey(LeftShift);
     public float sprintSpeed = 10f;
-
-
-    Animator animator;
-
-
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -35,47 +36,42 @@ public class PlayerMotor : MonoBehaviour
         //get char controller 
         controller = GetComponent<CharacterController>();
 
-        //animatorHandler = GetComponentInChildren<AnimatorHandler>();
+        //
         animator.GetFloat("Speed");
-
-        //animator = GetComponent<animator>;
-
-
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        //GROUNDED built in controller method
         isGrounded = controller.isGrounded;
 
-
-
-        //animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0);
-
-        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && Input.GetKey(KeyCode.LeftShift))
+        //WALKING ANIMATOR
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
-            //(string name, float value, float dampTime, deltaTime)
+            animator.SetFloat("Speed", 0.5f, .1f, Time.deltaTime);
+        }
+
+        //SPRINTING ANIMATOR
+        else if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && Input.GetKey(KeyCode.LeftShift))
+        {
             animator.SetFloat("Speed", 1f, .1f, Time.deltaTime);
         }
 
-        else if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
-        {
-            animator.SetFloat("Speed", 0.5f, .1f, Time.deltaTime);
-
-
-
-        }
-
+        //IDLE ANIMATOR
         else
         {
             animator.SetFloat("Speed", 0f, .1f, Time.deltaTime);
+        }
 
-
-
-
-
+        //JUMP CONTROLLER
+        if(playerVelocity.y < 0)
+        {
+            playerVelocity.y += Vector3.up.y * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        } 
+        else if (playerVelocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            playerVelocity.y += Vector3.up.y * Physics.gravity.y * (lowJumpMult - 1) * Time.deltaTime;
         }
     }
 
@@ -86,7 +82,8 @@ public class PlayerMotor : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 
-        //move char controller by trans(plyr inpt)x(bool value is sprinting?sprintelse)x(deltatime)
+        //WALKING/SPRINTING
+        //MOVES CHARACTER CONTROLLER OBJECT USING KEYBOARD INPUT, TERNARY OPERATOR USED TO DETERMINE WALKING OR SPRINTING SPEED
         controller.Move(transform.TransformDirection(moveDirection) * (isSprinting ? sprintSpeed : speed) * Time.deltaTime);
         //gravity and keeping player to ground when appropriate 
         playerVelocity.y += gravity * Time.deltaTime;
@@ -94,17 +91,13 @@ public class PlayerMotor : MonoBehaviour
             playerVelocity.y = -2f;
         controller.Move(playerVelocity * Time.deltaTime);
         Debug.Log(playerVelocity.y);
-
-
     }
 
     public void Jump()
     {
         if (isGrounded)
         {
-            playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+            playerVelocity.y = Vector3.up.y * jumpHeight;
         }
     }
 }
-
- 
