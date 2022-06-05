@@ -5,10 +5,10 @@ using UnityEngine.AI;
 public class AIController : MonoBehaviour
 {
     public NavMeshAgent navMeshAgent;               //  Nav mesh agent component
-    public float startWaitTime = 2;                 //  Wait time of every action
-    public float timeToRotate = 0.5f;                  //  Wait time when the enemy detect near the player without seeing
-    public float speedWalk = 1;                     //  Walking speed, speed in the nav mesh agent
-    public float speedRun = 3;                      //  Running speed
+    public float startWaitTime = 4;                 //  Wait time of every action
+    public float timeToRotate = 2;                  //  Wait time when the enemy detect near the player without seeing
+    public float speedWalk = 6;                     //  Walking speed, speed in the nav mesh agent
+    public float speedRun = 9;                      //  Running speed
 
     public float viewRadius = 15;                   //  Radius of the enemy view
     public float viewAngle = 90;                    //  Angle of the enemy view
@@ -32,9 +32,6 @@ public class AIController : MonoBehaviour
     bool m_IsPatrol;                                //  If the enemy is patrol, state of patroling
     bool m_CaughtPlayer;                            //  if the enemy has caught the player
 
-    public GameObject Enemy;                        //  declaring enemy
-    Animator animator;
-
     void Start()
     {
         m_PlayerPosition = Vector3.zero;
@@ -51,10 +48,6 @@ public class AIController : MonoBehaviour
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = speedWalk;             //  Set the navemesh speed with the normal speed of the enemy
         navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);    //  Set the destination to the first waypoint
-
-
-        animator = Enemy.GetComponent<Animator>();
-        animator.GetFloat("Speed1");
     }
 
     private void Update()
@@ -68,31 +61,6 @@ public class AIController : MonoBehaviour
         else
         {
             Patroling();
-        }
-
-        //animation states for enemy AI
-        if (navMeshAgent.speed > 4)
-        {
-            //(string name, float value, float dampTime, deltaTime)
-            animator.SetFloat("Speed1", 1f, .1f, Time.deltaTime);
-        }
-
-        else if (navMeshAgent.speed < 8 )
-        {
-            animator.SetFloat("Speed1", 0.5f, .1f, Time.deltaTime);
-
-
-
-        }
-
-        else if (navMeshAgent.speed == 0)
-        {
-            animator.SetFloat("Speed1", 0f, .1f, Time.deltaTime);
-
-
-
-
-
         }
     }
 

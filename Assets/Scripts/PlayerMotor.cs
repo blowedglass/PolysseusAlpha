@@ -46,16 +46,16 @@ public class PlayerMotor : MonoBehaviour
         //GROUNDED built in controller method
         isGrounded = controller.isGrounded;
 
-        //WALKING ANIMATOR
-        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
-        {
-            animator.SetFloat("Speed", 0.5f, .1f, Time.deltaTime);
-        }
-
-        //SPRINTING ANIMATOR
-        else if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && Input.GetKey(KeyCode.LeftShift))
+         //SPRINTING ANIMATOR
+       if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && Input.GetKey(KeyCode.LeftShift))
         {
             animator.SetFloat("Speed", 1f, .1f, Time.deltaTime);
+        }
+
+        //WALKING ANIMATOR
+        else if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        {
+            animator.SetFloat("Speed", 0.5f, .1f, Time.deltaTime);
         }
 
         //IDLE ANIMATOR
