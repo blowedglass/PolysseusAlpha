@@ -12,12 +12,13 @@ namespace SG
         {
             animator = GetComponentInChildren<Animator>();
         }
-        public void HandleLightAttack(WeaponItem weapon)
+       
+        /*public void HandleLightAttack(WeaponItem weapon)
         {
             animator.PlayerTargetAnimation(weapon.OH_Light_Attack_1, true);
         }
 
-        /*public void HandleHeavyAttack(WeaponItem weapon)
+        public void HandleHeavyAttack(WeaponItem weapon)
         {
             animatorHandler.PlayerTargetAnimation(weapon.OH_Heavy_Attack_1, true);
         }
