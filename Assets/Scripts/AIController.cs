@@ -42,7 +42,7 @@ public class AIController : MonoBehaviour
         m_WaitTime = startWaitTime;                 //  Set the wait time variable that will change
         m_TimeToRotate = timeToRotate;
 
-        m_CurrentWaypointIndex = 0;                 //  Set the initial waypoint
+        m_CurrentWaypointIndex = 1;                 //  Set the initial waypoint
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         navMeshAgent.isStopped = false;
